@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import express,{ Express,Request, Response} from 'express';
 import taskRouter from './routers/task.router';
-import fakeTask from './mocks';
 
 
 

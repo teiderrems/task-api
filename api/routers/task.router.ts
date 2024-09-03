@@ -9,9 +9,9 @@ taskRouter.get('/:id',new TaskController().findOne);
 taskRouter.post('/',new TaskController().create);
 taskRouter.put('/:id',new TaskController().update);
 taskRouter.get('/:taskId/comments/',new CommentsController().findAll);
-taskRouter.get('/comments/:id',new CommentsController().findOne);
-taskRouter.post('/comments/',new CommentsController().create);
-taskRouter.put('/comments/:id',new CommentsController().update);
+taskRouter.get('/:taskId/comments/:id',new CommentsController().findOne);
+taskRouter.post('/:taskId/comments/',new CommentsController().create);
+taskRouter.put('/:taskId/comments/:id',new CommentsController().update);
 
 
 

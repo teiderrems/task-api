@@ -24,33 +24,35 @@ export class CommentsService{
     }
 
 
-    public async findOne(id:number):Promise<CommentType |any>{
+    public async findOne(id:number,taskId:number):Promise<CommentType |any>{
 
         return await prisma.comments.findUniqueOrThrow({
             where:{
-                id
+                id:id,
+                taskId:taskId
             }
         });
     }
 
-    public async create(comments:CommentType):Promise<CommentType |any >{
+    public async create(comments:CommentType,taskId:number):Promise<CommentType |any >{
 
         return await prisma.comments.create({
             data:{
                 title:comments.title,
                 content:comments.content,
                 author:comments.author,
-                taskId:comments.taskId
+                taskId:taskId
             }
         });
     }
 
 
-    public async update(id: number, comments:Partial<CommentType>):Promise<CommentType |any >{
+    public async update(id: number, comments:Partial<CommentType>,taskId:number):Promise<CommentType |any >{
 
         return await prisma.comments.update({
             where:{
-                id
+                id:id,
+                taskId:taskId
             },
             data:{
                 title:comments.title,
@@ -62,11 +64,12 @@ export class CommentsService{
     }
 
 
-    public async delete(id:number):Promise<any>{
+    public async delete(id:number,taskId:number):Promise<any>{
 
         return await prisma.comments.delete({
             where:{
-                id
+                id:id,
+                taskId:taskId
             }
         });
     }
