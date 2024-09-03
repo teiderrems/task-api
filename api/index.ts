@@ -25,4 +25,5 @@ app.get('',(req:Request,res:Response)=>{
 app.listen(PORT,()=>{
     // await fakeTask();
     console.info(`server running in http://localhost:${PORT}`);
-})
+});
+export default app;
