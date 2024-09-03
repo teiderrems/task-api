@@ -1,17 +1,6 @@
 import { prisma } from ".."
 
 const fakeTask=async()=>{
-    // (await prisma.comments.findMany()).map(async(t)=>await prisma.task.delete({
-    //     where:{
-    //         id:t.id
-    //     }
-    // }));
-
-    // (await prisma.task.findMany()).map(async(t)=>await prisma.task.delete({
-    //     where:{
-    //         id:t.id
-    //     }
-    // }));
     
     var i=0
     while(i<10){
