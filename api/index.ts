@@ -1,29 +1,28 @@
-import { PrismaClient } from '@prisma/client';
-import express,{ Express,Request, Response} from 'express';
-import taskRouter from './routers/task.router';
+import { ExpressAuth } from "@auth/express"
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { prisma } from "../lib/prisma";
+import express from 'express';
+import helmet from "helmet";
+import GitHub from "@auth/express/providers/github";
+
+ 
+const app = express()
+ 
+
+const PORT=Number(process.env.PORT)??8000;
+
+app.set("trust proxy", true)
+app.use(
+  "/api/auth/*",
+  ExpressAuth({
+    providers: [GitHub],
+    adapter: PrismaAdapter(prisma),
+  })
+);
 
 
-
-
-export const prisma=new PrismaClient();
-
-
-const app:Express=express();
-
-const PORT=8000;
-app.use(express.json());
-
-
-
-app.use('/tasks',taskRouter);
-
-app.get('',(req:Request,res:Response)=>{
-
-    return res.status(200).send(`<a><h1>Hello world</h1></a>`);
-});
+app.use(helmet());
 
 app.listen(PORT,()=>{
-    // await fakeTask();
-    console.info(`server running in http://localhost:${PORT}`);
-});
-export default app;
+    console.log(`Server running on http://localhost:${PORT}`);
+})

@@ -109,7 +109,7 @@
     "target": "ES6",                // Version de JavaScript cible
     "module": "commonjs",           // Module système utilisé
     "outDir": "./public",          // Répertoire de sortie pour les fichiers compilés
-    "rootDir": "./api",             // Répertoire racine des fichiers sources
+    "rootDir": "./",             // Répertoire racine des fichiers sources
     "strict": true,                 // Activer toutes les vérifications strictes
     "esModuleInterop": true,        // Permet une meilleure interopérabilité avec les modules CommonJS
     "skipLibCheck": true,           // Ignore la vérification des fichiers de déclaration de type
